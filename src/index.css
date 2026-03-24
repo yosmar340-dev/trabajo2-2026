@@ -5,16 +5,16 @@
 
   color-scheme: light dark;
   color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
+  background-color: #fdbdbd;
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 
-  --bg-color: #242424;
+  --bg-color: #f3bd75;
   --text-color: rgba(255, 255, 255, 0.87);
-  --button-bg: #1a1a1a;
+  --button-bg: #9c8f8f;
   --button-hover: #646cff;
 }
 
@@ -64,7 +64,7 @@ button {
 button:hover {
   border-color: var(--button-hover);
 }
-}
+
 button:focus,
 button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
