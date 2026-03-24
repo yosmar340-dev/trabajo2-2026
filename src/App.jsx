@@ -1,15 +1,38 @@
-import { useState } from 'react'
-import './App.css'
-const App = () => {
-  const [count, setCount] = useState(0)
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
+import Encabezado from "./components/navegacion/Encabezado";
+
+import Inicio from "./views/Inicio";
+import Catalogo from "./components/catalogo/TarjetaCatalogo"
+import Categorias from "./views/Catalogo"
+import Login from "./views/Login"
+import RutaProtegida from "./components/rutas/RutaProtegida"
+import Productos from "./views/Productos";
+import Pagina404 from "./views/Pagina404"
+
+import "./App.css"
+
+
+const App = () => {
   return (
-    <div className="App">
-      <h1>Contador clic: {count}</h1>
-      <button onClick={() => setCount(count + 1)}>Incrementar</button>
-      <button onClick={() => setCount(count - 1)}>Decrementar</button>
-    </div>
-  )
+    <Router>
+      <Encabezado />
+      
+      <main className="margen-superior-main">
+        <Routes>
+          <Route path="/login" element={<Login />} />
+          
+          <Route path="/" element={<RutaProtegida><Inicio /></RutaProtegida>} />
+          <Route path="/categorias" element={<RutaProtegida><Categorias /></RutaProtegida>} />
+          <Route path="/catalogo" element={<RutaProtegida><Catalogo /></RutaProtegida>} />
+          <Route path="/productos" element={<RutaProtegida><Productos /></RutaProtegida>} />
+          
+          <Route path="*" element={<Pagina404 />} />
+        </Routes>
+      </main>
+    </Router>
+  );
 }
 
-export default App
+export default App;
+
