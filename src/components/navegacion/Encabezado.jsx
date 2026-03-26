@@ -21,7 +21,7 @@ const Encabezado = () => {
       const { error } = await supabase.auth.signOut();
       if (error) throw error;
 
-      localStorage.removeItem("usuario_supabase");
+      localStorage.removeItem("usuario-supabase");
       setMostrarMenu(false);
       navigate("/login");
     } catch (error) {
@@ -32,8 +32,8 @@ const Encabezado = () => {
   // Detectar rutas especiales
   const esLogin = location.pathname === "/login";
   const esCatalogo =
-    location.pathname === "/Catalogo" ||
-    localStorage.getItem("usuario_supabase") !== null;
+    location.pathname === "/catalogo" &&
+    localStorage.getItem("usuario-supabase") === null;
 
   // Contenido del menú
   let contenidoMenu;
@@ -54,7 +54,7 @@ const Encabezado = () => {
     contenidoMenu = (
       <Nav className="ms-auto pe-2">
         <Nav.Link
-          onClick={() => manejarNavegacion("/Catalogo")}
+          onClick={() => manejarNavegacion("/catalogo")}
           className={mostrarMenu ? "color-texto-marca" : "text-white"}
         >
           <i className="bi-images me-2"></i>
@@ -83,7 +83,7 @@ const Encabezado = () => {
           </Nav.Link>
 
           <Nav.Link
-            onClick={() => manejarNavegacion("/Productos")}
+            onClick={() => manejarNavegacion("/productos")}
             className={mostrarMenu ? "color-texto-marca" : "text-white"}
           >
             {mostrarMenu ? <i className="bi-bag-heart-fill me-2"></i> : null}
@@ -118,7 +118,7 @@ const Encabezado = () => {
           <div className="mt-3 p-3 rounded bg-light text-dark">
             <p className="mb-2">
               <i className="bi-envelope-fill me-2"></i>
-              {localStorage.getItem("usuario_supabase")?.toLowerCase() || "Usuario"}
+              {localStorage.getItem("usuario-supabase")?.toLowerCase() || "Usuario"}
             </p>
 
             <button
